@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  root 'page#home'
+
+  # Static pages
+  PageController.action_methods.each do |action|
+    get "/#{action}", to: "page##{action}", as: "#{action}_page"
+  end
 end

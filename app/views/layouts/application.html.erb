@@ -6,9 +6,66 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
-  <body>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#4b338c">
+
+    <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded:200,300,400" rel="stylesheet">   </head>
+
+  <body class="main-body">
+
+  <div class="container-dynamic" style="height: 100%;">
+
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+
+      <!-- Brand name -->
+      <a class="navbar-brand" href="<%= root_url %>">Rently</a>
+
+      <!-- Navigation items collapsed -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <!-- Navigation items -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav navbar-left">
+          <li><%= link_to 'Find a location', root_path %></li>
+          <li><%= link_to 'Contact us', root_path %></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to 'My account', root_path %></li>
+        </ul>
+      </div>
+
+    </nav>
+    <!-- / Navigation bar -->
+
+
+    <!-- Main content -->
     <%= yield %>
+    <!-- / Main content -->
+
+    <!-- Footer -->
+    <div class="navbar navbar-fixed-bottom">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-sm-12 col-sm-offset-6 footer-text" style="padding-top: 24px">
+            <p>Copyright 2018 Rently</p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <!-- / Footer -->
+
+  </div>
   </body>
 </html>
