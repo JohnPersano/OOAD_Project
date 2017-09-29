@@ -1,6 +1,7 @@
 <div class="container-fluid" style="padding-top: 100px">
 
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Carousel -->
+  <div id="home_carousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -23,16 +24,124 @@
       </div>
     </div>
 
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <!-- Left control -->
+    <a class="left carousel-control" href="#home_carousel" data-slide="prev">
       <span class="glyphicon glyphicon-chevron-left"></span>
       <span class="sr-only">Previous</span>
     </a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+
+    <!-- Right control -->
+    <a class="right carousel-control" href="#home_carousel" data-slide="next">
       <span class="glyphicon glyphicon-chevron-right"></span>
       <span class="sr-only">Next</span>
     </a>
   </div>
+  <!-- End Carousel -->
 
+  <!-- Row container -->
+  <div style="padding-left: 10%; padding-right: 10%">
+
+    <!-- Title row -->
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 style="font-family: 'Encode Sans Expanded', sans-serif; font-weight: 200">Latest news</h1>
+      </div>
+    </div>
+
+
+    <!-- Stories row -->
+    <div class="row" style="">
+
+      <div class="col-sm-3">
+        <figure class="news_item">
+          <%= image_tag("yun.png") %>
+          <div class="date"><span class="day">29</span><span class="month">Sep</span></div>
+          <figcaption>
+            <h3>Yun Hao appointed CFO</h3>
+            <p style="height: 8em; overflow: hidden">
+              Her appointment as CFO will only solidify
+              Rently's unique position on the auto rental market.
+            </p>
+            <button>Read More</button>
+          </figcaption>
+          <a href="#"></a>
+        </figure>
+      </div>
+
+      <div class="col-sm-3">
+        <figure class="news_item">
+          <%= image_tag("elon.jpg") %>
+          <div class="date"><span class="day">01</span><span class="month">Aug</span></div>
+          <figcaption>
+            <h3>Elon invests 1.4B in Rently</h3>
+            <p style="height: 8em; overflow: hidden">
+              "I like renting cars" says the notorious tech giant. Elon has been known
+              to fund odd ventures outside of the tech industry.
+            </p>
+            <button>Read More</button>
+          </figcaption>
+          <a href="#"></a>
+        </figure>
+      </div>
+
+      <div class="col-sm-3">
+        <figure class="news_item">
+          <%= image_tag("random_people.jpg") %>
+          <div class="date"><span class="day">20</span><span class="month">Jul</span></div>
+          <figcaption>
+            <h3>Family praises Rently</h3>
+            <p style="height: 8em; overflow: hidden">
+              An Iowa family had their car break down moments before the trip to
+              the big soccer game. Luckily, they signed up for Rently days before.
+            </p>
+            <button>Read More</button>
+          </figcaption>
+          <a href="#"></a>
+        </figure>
+      </div>
+
+      <div class="col-sm-3">
+        <figure class="news_item">
+          <%= image_tag("aston.jpg") %>
+          <div class="date"><span class="day">04</span><span class="month">Jul</span></div>
+          <figcaption>
+            <h3>DB11 now available</h3>
+            <p style="height: 8em; overflow: hidden">
+              Aston Martin luxury is now possible to experience without selling your children.
+              DB11s will be in stock in several locations December 2017.
+            </p>
+            <button>Read More</button>
+          </figcaption>
+          <a href="#"></a>
+        </figure>
+      </div>
+
+    </div>
+    <!-- End Stories row -->
+
+    <!-- Title row -->
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="jumbotron" style="background-color: #1abc9c; margin-top: 54px">
+          <h1 class="display-3"
+              style="color: white;
+                 font-family: 'Encode Sans Expanded', sans-serif;
+                 font-weight: 200">
+            Rent your first vehicle free!
+          </h1>
+          <hr class="my-4" style="color: white; border-color: white">
+          <p class="lead" style="color: white;">
+            Don't overpay for your next rental, let Rently handle evferything for you.
+            Experience the convenience of online booking and next day vehicle delivery at no cost for your first rental!
+          </p>
+          <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+          </p>
+        </div>      </div>
+    </div>
+
+  </div>
+  <!-- End Row container -->
 
 </div>
+<!-- End Container fluid -->

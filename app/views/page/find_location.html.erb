@@ -1,0 +1,81 @@
+<div class="container-fluid" style="padding-top: 100px">
+
+  <!-- Row container -->
+  <div style="padding-left: 25%; padding-right: 25%">
+
+    <!-- Title row -->
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 style="font-family: 'Encode Sans Expanded', sans-serif; font-weight: 200">Find a Rently location close to
+          you</h1>
+      </div>
+    </div>
+
+    <div class="row" style="height: 50px;"></div>
+
+    <%= form_tag find_location_page_path, :method => 'get' do %>
+
+        <!-- Search by... row  -->
+        <div class="row" style=" border: solid 1px #00695C; padding: 12px; border-radius: 20px">
+
+          <!-- Search by address column -->
+          <div class="col-sm-4" style="">
+            <h3 style="font-family: 'Encode Sans Expanded', sans-serif; font-weight: 200">Search by address</h3>
+
+            <!-- Street address -->
+            <p class="form_text">Street address</p>
+            <%= text_field_tag :street_address, params[:street_address], class: 'form_textfield_full' %>
+
+            <!-- City -->
+            <p class="form_text">City</p>
+            <%= text_field_tag :city, params[:city], class: 'form_textfield_3q' %>
+
+            <!-- State -->
+            <p class="form_text">State</p>
+            <%= text_field_tag :state, params[:state], class: 'form_textfield_half' %>
+
+            <!-- Zip code -->
+            <p class="form_text">Zipcode</p>
+            <%= text_field_tag :zipcode, params[:zipcode], class: 'form_textfield_half' %>
+          </div>
+
+          <!-- Spacer -->
+          <div class="col-sm-2" style=""></div>
+
+          <div class="col-sm-1 form_divider"></div>
+
+          <!-- Search by Airport column -->
+          <div class="col-sm-4">
+            <h3 style="font-family: 'Encode Sans Expanded', sans-serif; font-weight: 200">Search by Airport</h3>
+
+            <!-- Airport -->
+            <p class="form_text">Airport name</p>
+            <%= text_field_tag :airport, params[:airport], class: 'form_textfield_3q' %>
+          </div>
+
+          <div class="col-sm-12">
+            <%= submit_tag 'Find a Rently', :name => nil, class: 'submit_button' %>
+          </div>
+        </div>
+
+
+
+    <% end %>
+
+  </div>
+
+
+
+  <% if @stores %>
+      <% @stores.each do |store| %>
+          <%= store.name %>
+
+      <% end %>
+  <% end %>
+
+
+
+  <!-- End Row container -->
+
+</div>
+<!-- End Container fluid -->

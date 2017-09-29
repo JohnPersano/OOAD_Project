@@ -1,6 +1,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@import "home";
+
 $color-white-text : #FFF;
 $color-white-text-hover : #DDD;
 $color-background-white : #EEE;
@@ -85,6 +87,7 @@ html {
 /** Body **/
 .main-body {
   background-color: $color-background-white;
+  padding-bottom: 120px;
 }
 .content {
   padding-top: 64px;
@@ -118,6 +121,39 @@ html {
 /** End Footer **/
 
 
+/** Carousel **/
+.carousel-inner > .item > img {
+  margin: 0 auto;
+}
+/** End Carousel **/
+
+/** Form items **/
+.form_text {
+  font-family: 'Encode Sans Expanded', sans-serif;
+  font-weight: 200; margin-bottom: 0
+}
+
+.form_textfield_full {
+  margin-bottom: 10px;
+  width: 100%;
+}
+.form_textfield_3q {
+  margin-bottom: 10px;
+  width: 75%;
+}
+.form_textfield_half {
+  margin-bottom: 10px;
+  width: 50%;
+}
+.submit_button {
+  width: 35%;
+  margin-top: 24px;
+}
+.form_divider {
+  border-left:1px solid #00695C;height:300px;
+}
+/** End Form items **/
+
 // Very large devices
 @media (min-width: 2200px) {
   .navbar-default .navbar-brand {
@@ -127,8 +163,9 @@ html {
     margin-right: 25%;
   }
 
-  div.quote-box-outer {
-    height: 300px;
+  .form_divider {
+    border-left:1px solid #00695C;
+    height:300px;
   }
 }
 
@@ -141,8 +178,9 @@ html {
     margin-right: 15%;
   }
 
-  div.quote-box-outer {
-    height: 300px;
+  .form_divider {
+    border-left:1px solid #00695C;
+    height:300px;
   }
 }
 
@@ -155,9 +193,9 @@ html {
     margin-right: 8%;
   }
 
-
-  div.quote-box-outer {
-    height: 100%;
+  .form_divider {
+    border-left:1px solid #00695C;
+    height:300px;
   }
 }
 
@@ -170,8 +208,9 @@ html {
     margin-right: 5%;
   }
 
-  div.quote-box-outer {
-    height: 100%;
+  .form_divider {
+    border-left:1px solid #00695C;
+    height:300px;
   }
 }
 
@@ -183,7 +222,9 @@ html {
   .navbar-right {
     margin-right: 3%;
   }
-  div.quote-box-outer {
-    height: 100%;
+
+  .form_divider {
+    border-left:1px solid #00695C;
+    height:0;
   }
 }
