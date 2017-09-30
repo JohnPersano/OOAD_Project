@@ -1,13 +1,13 @@
 class Store
 
-  attr_accessor :address, :name
+  attr_accessor :name, :phone_number, :hours, :address, :image_url
 
-
-  def initialize(uid, name, phone_number, hours, address)
+  def initialize(uid, name, phone_number, hours, image_url, address)
     @uid = uid
     @name = name
     @phone_number = phone_number
     @hours = hours
+    @image_url = image_url
 
     @address = address
   end

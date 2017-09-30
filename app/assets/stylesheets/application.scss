@@ -2,6 +2,7 @@
 @import "bootstrap";
 
 @import "home";
+@import "find_location";
 
 $color-white-text : #FFF;
 $color-white-text-hover : #DDD;
@@ -149,8 +150,8 @@ html {
   width: 35%;
   margin-top: 24px;
 }
-.form_divider {
-  border-left:1px solid #00695C;height:300px;
+.form-divider {
+  border-left:1px solid #00695C;height:250px;
 }
 /** End Form items **/
 
@@ -163,9 +164,9 @@ html {
     margin-right: 25%;
   }
 
-  .form_divider {
+  .form-divider {
     border-left:1px solid #00695C;
-    height:300px;
+    height:250px;
   }
 }
 
@@ -178,9 +179,9 @@ html {
     margin-right: 15%;
   }
 
-  .form_divider {
+  .form-divider {
     border-left:1px solid #00695C;
-    height:300px;
+    height:250px;
   }
 }
 
@@ -193,9 +194,9 @@ html {
     margin-right: 8%;
   }
 
-  .form_divider {
+  .form-divider {
     border-left:1px solid #00695C;
-    height:300px;
+    height:250px;
   }
 }
 
@@ -208,9 +209,9 @@ html {
     margin-right: 5%;
   }
 
-  .form_divider {
+  .form-divider {
     border-left:1px solid #00695C;
-    height:300px;
+    height:250px;
   }
 }
 
@@ -223,7 +224,7 @@ html {
     margin-right: 3%;
   }
 
-  .form_divider {
+  .form-divider {
     border-left:1px solid #00695C;
     height:0;
   }

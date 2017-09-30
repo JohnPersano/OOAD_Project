@@ -1,0 +1,27 @@
+
+.store-row {
+  margin-top: 25px;
+  background-color: white;
+  box-shadow: 2px 2px 2px #888888;
+
+  -webkit-animation: fadein 1s;
+  -moz-animation: fadein 1s;
+  animation: fadein 1s;
+}
+
+.store-image {
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.store-button {
+  font-size: 1.15em;
+  margin-bottom: 12px;
+  margin-left: -2px;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

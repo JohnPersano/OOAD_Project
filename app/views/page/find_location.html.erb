@@ -6,12 +6,13 @@
     <!-- Title row -->
     <div class="row">
       <div class="col-sm-12">
-        <h1 style="font-family: 'Encode Sans Expanded', sans-serif; font-weight: 200">Find a Rently location close to
-          you</h1>
+        <h2 style="font-family: 'Encode Sans Expanded', sans-serif; font-weight: 200">
+          Find a Rently location close to you
+        </h2>
       </div>
     </div>
 
-    <div class="row" style="height: 50px;"></div>
+    <div class="row" style="height: 25px;"></div>
 
     <%= form_tag find_location_page_path, :method => 'get' do %>
 
@@ -19,33 +20,40 @@
         <div class="row" style=" border: solid 1px #00695C; padding: 12px; border-radius: 20px">
 
           <!-- Search by address column -->
-          <div class="col-sm-4" style="">
+          <div class="col-sm-5">
             <h3 style="font-family: 'Encode Sans Expanded', sans-serif; font-weight: 200">Search by address</h3>
 
             <!-- Street address -->
-            <p class="form_text">Street address</p>
-            <%= text_field_tag :street_address, params[:street_address], class: 'form_textfield_full' %>
+            <p class="form_text">Street name</p>
+            <%= text_field_tag :street_name, params[:street_name], class: 'form_textfield_full' %>
 
             <!-- City -->
             <p class="form_text">City</p>
             <%= text_field_tag :city, params[:city], class: 'form_textfield_3q' %>
 
-            <!-- State -->
-            <p class="form_text">State</p>
-            <%= text_field_tag :state, params[:state], class: 'form_textfield_half' %>
+            <div class="row">
+              <div class="col-sm-4">
+                <!-- State -->
+                <p class="form_text">State</p>
+                <%= select_tag(:state, options_for_select(@states)) %>
+              </div>
 
-            <!-- Zip code -->
-            <p class="form_text">Zipcode</p>
-            <%= text_field_tag :zipcode, params[:zipcode], class: 'form_textfield_half' %>
+              <div class="col-sm-8">
+                <!-- Zip code -->
+                <p class="form_text">Zipcode</p>
+                <%= text_field_tag :zipcode, params[:zipcode], class: 'form_textfield_full' %>
+              </div>
+            </div>
+
           </div>
 
           <!-- Spacer -->
-          <div class="col-sm-2" style=""></div>
+          <div class="col-sm-1" style=""></div>
 
-          <div class="col-sm-1 form_divider"></div>
+          <div class="col-sm-1 form-divider"></div>
 
           <!-- Search by Airport column -->
-          <div class="col-sm-4">
+          <div class="col-sm-5">
             <h3 style="font-family: 'Encode Sans Expanded', sans-serif; font-weight: 200">Search by Airport</h3>
 
             <!-- Airport -->
@@ -57,22 +65,45 @@
             <%= submit_tag 'Find a Rently', :name => nil, class: 'submit_button' %>
           </div>
         </div>
-
-
-
     <% end %>
 
+    <% @stores.each do |store| %>
+
+        <div class="row store-row w3-animate-opacity">
+          <div class="col-sm-8">
+            <h3 style="font-family: 'Encode Sans Expanded', sans-serif;
+                font-weight: 400">
+              <%= store.name %>
+            </h3>
+            <h4 style="font-family: 'Encode Sans Expanded', sans-serif;
+                font-weight: 300">
+              <%= store.address.street_number %> <%= store.address.street_name %> <br>
+              <%= store.address.city %>, <%= store.address.state %> <%= store.address.zipcode %>
+            </h4>
+
+            <h5>Phone: <%= number_to_phone(store.phone_number, area_code: true) %></h5>
+
+            <h4 style="color: forestgreen">Open now</h4>
+
+            <button class="btn btn-primary store-button" type="submit">Check inventory</button>
+          </div>
+
+          <div class="col-sm-4">
+            <%= image_tag store.image_url, class: 'store-image' %>
+          </div>
+        </div>
+    <% end %>
+
+    <% unless @stores.any? %>
+        <h3 style="font-family: 'Encode Sans Expanded', sans-serif;
+            font-weight: 200;
+            margin-top: 24px;">
+          Sorry, no locations found.
+        </h3>
+    <% end %>
+
+
   </div>
-
-
-
-  <% if @stores %>
-      <% @stores.each do |store| %>
-          <%= store.name %>
-
-      <% end %>
-  <% end %>
-
 
 
   <!-- End Row container -->
