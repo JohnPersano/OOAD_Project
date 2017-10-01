@@ -1,15 +1,21 @@
 class Store
 
-  attr_accessor :name, :phone_number, :hours, :address, :image_url
+  attr_accessor :uid, :name, :phone_number, :image_url, :hours, :address, :store_items
 
-  def initialize(uid, name, phone_number, hours, image_url, address)
-    @uid = uid
-    @name = name
-    @phone_number = phone_number
-    @hours = hours
-    @image_url = image_url
+  def initialize(data)
 
-    @address = address
+    puts data
+    @uid = data[:uid]
+    @name = data[:name]
+    @phone_number = data[:phone_number]
+    @image_url = data[:image_url]
+
+    @hours = data[:hours]
+    @address = data[:address]
+    @customers = data[:customers]
+    @employees = data[:employees]
+    @administrator = data[:administrator]
+    @store_items = data[:store_items]
   end
 
   def self.search(search)

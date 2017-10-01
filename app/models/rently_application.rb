@@ -1,4 +1,7 @@
 
+# Handles generating faux data
+include RentlyApplicationHelper
+
 # Class that handles top level user functionality
 class RentlyApplication
   # Ruby mixin that forces RentlyApplication to be a singleton
@@ -6,24 +9,35 @@ class RentlyApplication
 
   # Called when RentlyApplication is initialized
   def initialize
-    @stores = generate_stores
+    @stores = load_stores
   end
 
   # Search for stores using address or airport
   def search_for_store(query)
+
     # List to hold all store matches
     store_matches = []
 
+    # for each store
     @stores.each do |store|
-      if store.address.zipcode == query[:zipcode]
-        store_matches << store
+
+      if query[:uid] && !query[:uid].empty?
+        return store if store.uid == query[:uid]
+      end
+
+      # If the user entered a zipcode
+      if query[:zipcode] && !query[:zipcode].empty?
+        if store.address.zipcode == query[:zipcode]
+          store_matches << store
+          next
+        end
         next
       end
 
       next unless store.address.state == query[:state]
 
       # If the user entered a street name
-      if query[:street_name]
+      if query[:street_name] && !query[:street_name].empty?
 
         # Downcase and remove all spaces in both the query and store street names
         sanitized_store_street_name = store.address.street_name.downcase.gsub(/\s+/, '')
@@ -37,7 +51,7 @@ class RentlyApplication
       end
 
       # If the user entered a city name
-      if query[:city]
+      if query[:city] && !query[:city].empty?
 
         # Downcase and remove all spaces in both the query and store city
         sanitized_store_city = store.address.city.downcase.gsub(/\s+/, '')
@@ -58,21 +72,10 @@ class RentlyApplication
     store_matches
   end
 
-  def generate_stores
-    typical_hours = { monday:    [700, 1700],
-                      tuesday:   [700, 1700],
-                      wednesday: [700, 1700],
-                      thursday:  [700, 1700],
-                      friday:    [700, 1400] }
+  # Load store data
+  def load_stores
 
-    mystic_address = Address.new('Main St.', 123, '', 'Mystic', 'CT', 'USA', '06355')
-    mystic_store = Store.new('1234', 'Mystic Rently', 1_234_567_890, typical_hours,
-                             'store_1.jpg', mystic_address)
-
-    milford_address = Address.new('Post rd.', 101, '', 'Milford', 'CT', 'USA', '06514')
-    milford_store = Store.new('1234', 'Milford Rently', 1_234_567_890, typical_hours,
-                              'store_2.jpg', milford_address)
-
-    [mystic_store, milford_store]
+    # DataGenerator generatees faux data, in production this would be a database
+    DataGenerator.instance.get_store_data
   end
 end

@@ -25,23 +25,23 @@
 
             <!-- Street address -->
             <p class="form_text">Street name</p>
-            <%= text_field_tag :street_name, params[:street_name], class: 'form_textfield_full' %>
+            <%= text_field_tag :street_name, params[:street_name], :value => params[:street_name], class: 'form_textfield_full' %>
 
             <!-- City -->
             <p class="form_text">City</p>
-            <%= text_field_tag :city, params[:city], class: 'form_textfield_3q' %>
+            <%= text_field_tag :city, params[:city], :value => params[:city], class: 'form_textfield_3q' %>
 
             <div class="row">
               <div class="col-sm-4">
                 <!-- State -->
                 <p class="form_text">State</p>
-                <%= select_tag(:state, options_for_select(@states)) %>
+                <%= select_tag(:state, options_for_select(@states, params[:state])) %>
               </div>
 
               <div class="col-sm-8">
                 <!-- Zip code -->
                 <p class="form_text">Zipcode</p>
-                <%= text_field_tag :zipcode, params[:zipcode], class: 'form_textfield_full' %>
+                <%= text_field_tag :zipcode, params[:zipcode], :value => params[:zipcode], class: 'form_textfield_full' %>
               </div>
             </div>
 
@@ -58,11 +58,11 @@
 
             <!-- Airport -->
             <p class="form_text">Airport name</p>
-            <%= text_field_tag :airport, params[:airport], class: 'form_textfield_3q' %>
+            <%= text_field_tag :airport, params[:airport], :value => params[:airport], class: 'form_textfield_3q' %>
           </div>
 
           <div class="col-sm-12">
-            <%= submit_tag 'Find a Rently', :name => nil, class: 'submit_button' %>
+            <%= submit_tag 'Finding a Rently...', :name => nil, :value => params[:name], class: 'submit_button' %>
           </div>
         </div>
     <% end %>
@@ -84,8 +84,7 @@
             <h5>Phone: <%= number_to_phone(store.phone_number, area_code: true) %></h5>
 
             <h4 style="color: forestgreen">Open now</h4>
-
-            <button class="btn btn-primary store-button" type="submit">Check inventory</button>
+            <%= link_to 'Check inventory', store_page_path(:uid => store.uid), class: 'btn btn-primary store-button' %>
           </div>
 
           <div class="col-sm-4">
