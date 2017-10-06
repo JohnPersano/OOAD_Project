@@ -7,6 +7,8 @@ class RentlyApplication
   # Ruby mixin that forces RentlyApplication to be a singleton
   include Singleton
 
+  attr_accessor :stores
+
   # Called when RentlyApplication is initialized
   def initialize
     @stores = load_stores
