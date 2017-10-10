@@ -1,0 +1,59 @@
+<div class="container-fluid" style="padding-top: 100px">
+
+  <div style="padding-left: 25%; padding-right: 25%">
+
+    <div class="col-sm-6 col-sm-offset-3">
+
+      <% if resource.is_a? Customer %>
+          <h2 style="font-family: 'Encode Sans Expanded', sans-serif; font-weight: 200">Log in</h2>
+      <% elsif resource.is_a? Employee %>
+          <h2 style="font-family: 'Encode Sans Expanded', sans-serif; font-weight: 200">Employee log in</h2>
+      <% end %>
+
+      <!-- Spacer -->
+      <div style="height: 12px"></div>
+
+      <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+
+
+      <div class="row" style=" border: solid 1px #00695C; padding: 24px; border-radius: 20px">
+
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="field">
+              <%= f.label :email %><br/>
+              <%= f.email_field :email, autofocus: true %>
+            </div>
+
+            <div class="field">
+              <%= f.label :password %><br/>
+              <%= f.password_field :password, autocomplete: "off" %>
+            </div>
+
+            <% if resource.is_a? Customer %>
+                <% if devise_mapping.rememberable? -%>
+                    <div class="field">
+                      <%= f.check_box :remember_me %>
+                      <%= f.label :remember_me %>
+                    </div>
+                <% end %>
+            <% end %>
+
+            <div class="actions" style="padding-top: 6px">
+              <%= f.submit "Log in" %>
+            </div>
+        <% end %>
+
+        <% if resource.is_a? Customer %>
+            <%= render "devise/shared/links" %>
+        <% end %>
+
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,84 @@
+<div class="container-fluid" style="padding-top: 100px">
+
+  <div style="padding-left: 20%; padding-right: 20%">
+
+    <div class="col-sm-10 col-sm-offset-1">
+
+      <h2 style="font-family: 'Encode Sans Expanded', sans-serif; font-weight: 200">Sign up</h2>
+
+      <!-- Spacer -->
+      <div style="height: 12px"></div>
+
+      <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+
+      <%= devise_custom_error_messages! %>
+
+      <div class="row" style=" border: solid 1px #00695C; padding: 24px; border-radius: 20px">
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+            <div class="col-sm-5">
+
+              <div class="field" style="padding: 6px">
+                <p><b>Email</b></p>
+                <%= f.email_field :email, autofocus: true %>
+              </div>
+
+              <div class="field" style="padding: 6px">
+                <p><b>Password</b></p>
+                <%= f.password_field :password, autocomplete: "off" %>
+              </div>
+
+              <div class="field" style="padding: 6px">
+                <p><b>Confirm password</b></p>
+                <%= f.password_field :password_confirmation, autocomplete: "off" %>
+              </div>
+
+              <div class="actions">
+                <%= f.submit "Sign up" %>
+              </div>
+
+              <%= render "devise/shared/links" %>
+
+            </div>
+
+            <div class="col-sm-1"></div>
+
+
+            <div class="col-sm-5">
+
+              <div class="field" style="padding: 6px">
+                <p><b>Full name</b></p>
+                <%= f.text_field :name %>
+              </div>
+
+              <% if resource.is_a? Customer%>
+                  <div class="field" style="padding: 6px">
+                    <p><b>License number</b></p>
+                    <%= f.text_field :license_id, autocomplete: "off" %>
+                  </div>
+              <% else %>
+                  <div class="field" style="padding: 6px">
+                    <p><b>Employee ID</b></p>
+                    <%= f.text_field :employee_id, autocomplete: "off" %>
+                  </div>
+              <% end %>
+
+              <div class="field" style="padding: 6px">
+                <p><b>Birthday</b></p>
+                <%= f.date_select :dob, start_year: 1900 %>
+              </div>
+
+            </div>
+
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

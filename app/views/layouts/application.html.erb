@@ -1,65 +1,77 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>OOADProject</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>OOADProject</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="theme-color" content="#4b338c">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#4b338c">
 
-    <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded:200,300,400" rel="stylesheet">   </head>
+  <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded:200,300,400" rel="stylesheet">
+</head>
 
-  <body class="main-body">
+<body class="main-body">
 
-  <div class="container-dynamic" style="height: 100%;">
+<div class="container-dynamic" style="height: 100%;">
 
-    <!-- Navigation bar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+  <!-- Navigation bar -->
+  <nav class="navbar navbar-default navbar-fixed-top">
 
-      <!-- Brand name -->
-      <a class="navbar-brand" href="<%= root_url %>">Rently</a>
+    <!-- Brand name -->
+    <a class="navbar-brand" href="<%= root_url %>">Rently</a>
 
-      <!-- Navigation items collapsed -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
+    <!-- Navigation items collapsed -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
 
-      <!-- Navigation items -->
-      <div class="collapse navbar-collapse" id="navbar-collapse">
-        <ul class="nav navbar-nav navbar-left">
-          <li><%= link_to 'Find a location', find_location_page_url %></li>
-          <li><%= link_to 'Contact us', root_path %></li>
-        </ul>
+    <!-- Navigation items -->
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      <ul class="nav navbar-nav navbar-left">
+        <li><%= link_to 'Find a location', find_location_page_url %></li>
+        <li><%= link_to 'Contact us', root_path %></li>
+      </ul>
 
-        <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to 'My account', root_path %></li>
-        </ul>
-      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <% if customer_signed_in? %>
+            <li><%= link_to 'Customer account', edit_customer_registration_path %></li>
+            <li> <%= link_to 'Log out', destroy_customer_session_path, method: :delete %></li>
+      <% elsif employee_signed_in? %>
+            <li><%= link_to 'Account', edit_employee_registration_path %></li>
+            <li><%= link_to 'Dashboard', employee_dashboard_page_path %></li>
+            <li> <%= link_to 'Log out', destroy_employee_session_path, method: :delete %></li>
+      <% else %>
+            <li><%= link_to 'Log in', new_customer_session_path %></li>
+        <% end %>
+      </ul>
+    </div>
 
-    </nav>
-    <!-- / Navigation bar -->
+  </nav>
+  <!-- / Navigation bar -->
 
 
-    <!-- Main content -->
-    <%= yield %>
-    <!-- / Main content -->
+  <!-- Main content -->
+  <%= yield %>
+  <!-- / Main content -->
 
-    <!-- Footer -->
-    <div class="navbar navbar-fixed-bottom">
-      <div class="container">
-        <div class="row">
+  <!-- Footer -->
+  <div class="navbar navbar-fixed-bottom">
+    <div class="container">
+      <div class="row">
 
-          <div class="col-sm-12 col-sm-offset-6 footer-text" style="padding-top: 24px">
-            <p>Copyright 2017 Rently</p>
-          </div>
+        <div class="col-sm-6 footer-text" style="padding-top: 24px">
+          <%= link_to 'Employee sign in', new_employee_session_path, class: 'white-link' %>
+        </div>
 
+        <div class="col-sm-6 footer-text" style="padding-top: 24px">
+          <p>Copyright 2017 Rently</p>
         </div>
 
       </div>
@@ -67,5 +79,7 @@
     <!-- / Footer -->
 
   </div>
-  </body>
+</div>
+
+</body>
 </html>

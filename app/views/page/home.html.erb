@@ -1,5 +1,12 @@
 <div class="container-fluid" style="padding-top: 100px">
 
+  <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+
   <!-- Carousel -->
   <div id="home_carousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->

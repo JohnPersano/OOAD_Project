@@ -1,0 +1,40 @@
+<div class="container-fluid" style="padding-top: 100px">
+
+  <!-- Row container -->
+  <div style="padding-left: 10%; padding-right: 10%">
+
+    <!-- Title row -->
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 style="font-family: 'Encode Sans Expanded', sans-serif; font-weight: 200">Orders</h1>
+        <div style="height: 50px;"></div>
+        <h3 style="margin-left: 74px">No orders yet!</h3>
+        <div style="height: 50px;"></div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 style="font-family: 'Encode Sans Expanded', sans-serif; font-weight: 200">Customers</h1>
+
+        <% @customers.each do |customer| %>
+
+            <div class="row store-row w3-animate-opacity" style="margin-left: 6px; margin-right: 6px; padding: 20px">
+              <h4>Name: <%= customer.name %></h4>
+              <p>Email: <%= customer.email %></p>
+              <p>License ID: <%= customer.license_id %></p>
+              <p>DOB: <%= customer.dob %></p>
+            </div>
+
+        <% end %>
+
+      </div>
+    </div>
+
+
+  </div>
+  <!-- End Row container -->
+
+</div>
+<!-- End Container fluid -->
