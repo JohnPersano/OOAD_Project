@@ -1,5 +1,7 @@
 class Employee < ApplicationRecord
 
+  has_one :address
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 

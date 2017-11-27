@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171010165151) do
+ActiveRecord::Schema.define(version: 20171127185519) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "street_name"
+    t.string "street_number"
+    t.string "apartment"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.string "zip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -52,6 +64,47 @@ ActiveRecord::Schema.define(version: 20171010165151) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_employees_on_email", unique: true
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
+  end
+
+  create_table "store_items", force: :cascade do |t|
+    t.integer "quantity"
+    t.boolean "available"
+    t.datetime "available_time"
+    t.decimal "cost"
+    t.decimal "discount"
+    t.string "dropoff_location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stores", force: :cascade do |t|
+    t.string "uid"
+    t.string "name"
+    t.string "phone_number"
+    t.string "image_url"
+    t.string "hours"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "vehicle_descriptions", force: :cascade do |t|
+    t.string "model"
+    t.integer "year"
+    t.string "color"
+    t.text "description"
+    t.integer "seats"
+    t.integer "doors"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "vehicles", force: :cascade do |t|
+    t.string "vin"
+    t.string "plate"
+    t.integer "mileage"
+    t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
