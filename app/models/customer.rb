@@ -1,4 +1,5 @@
 class Customer < ApplicationRecord
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -16,5 +17,4 @@ class Customer < ApplicationRecord
   validates_presence_of :dob
   validates :dob, :timeliness => {before: lambda {8.years.ago}, :type => :date ,
                                   before_message: 'must be at least 18 years old'}
-
 end

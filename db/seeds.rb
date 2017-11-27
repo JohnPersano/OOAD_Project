@@ -8,3 +8,5 @@
 
 Employee.create!(name: 'John Persano', email: 'john@rently.com', password: 'qweqwe', password_confirmation: 'qweqwe',
                  employee_id: 'MST-REN12345', dob: Date.parse('1991-02-03'))
+
+
