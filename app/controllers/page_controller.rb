@@ -1,15 +1,9 @@
 
 
 class PageController < ApplicationController
-  before_action :employee_login_required, only: :employee_dashboard
-  before_action :set_cache_buster, only: :employee_dashboard
-  before_action :employee_login_required, only: :order_action
-  before_action :set_cache_buster, only: :order_action
-
-  before_action :customer_account_required, only: :order
-  before_action :customer_account_required, only: :order_submitted
-  before_action :set_cache_buster, only: :order
-  before_action :set_cache_buster, only: :order_submitted
+  before_action :employee_login_required, only: [:employee_dashboard, :order_action]
+  before_action :set_cache_buster, only: [:employee_dashboard, :order_action, :order_submitted, :order]
+  before_action :customer_account_required, only: [:order, :order_submitted]
 
   attr_accessor :stores
 

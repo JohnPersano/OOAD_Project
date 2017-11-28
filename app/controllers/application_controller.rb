@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   end
 
   def customer_account_required
-    #redirect_to new_customer_session_path, alert: 'Please login before placing an order!' if current_customer.blank?
+    redirect_to new_customer_session_path, alert: 'Please login before placing an order!' if current_customer.blank?
   end
 end

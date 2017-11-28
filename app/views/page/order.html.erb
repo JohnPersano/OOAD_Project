@@ -31,7 +31,10 @@
 
     </table>
 
-    <%= link_to 'Send order', order_submitted_page_path(store: @order_store, store_item: @order_store_item), class: 'btn btn-primary store-button' %>
+    <div style="height: 25px; width: 100%"></div>
+
+    <%= link_to 'Send order', order_submitted_page_path(store: @order_store, store_item: @order_store_item),
+                class: 'btn btn-primary store-button', style: 'float: right;' %>
 
   </div>
   <!-- End Row container -->
