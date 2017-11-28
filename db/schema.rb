@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127185519) do
+ActiveRecord::Schema.define(version: 20171128163903) do
 
   create_table "addresses", force: :cascade do |t|
+    t.integer "store_id"
     t.string "street_name"
     t.string "street_number"
     t.string "apartment"
@@ -66,7 +67,19 @@ ActiveRecord::Schema.define(version: 20171127185519) do
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.integer "customer_id"
+    t.string "store_uid"
+    t.string "vehicle_vin"
+    t.datetime "date"
+    t.string "status"
+    t.decimal "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "store_items", force: :cascade do |t|
+    t.integer "store_id"
     t.integer "quantity"
     t.boolean "available"
     t.datetime "available_time"
@@ -88,6 +101,8 @@ ActiveRecord::Schema.define(version: 20171127185519) do
   end
 
   create_table "vehicle_descriptions", force: :cascade do |t|
+    t.integer "vehicle_id"
+    t.string "make"
     t.string "model"
     t.integer "year"
     t.string "color"
@@ -99,6 +114,7 @@ ActiveRecord::Schema.define(version: 20171127185519) do
   end
 
   create_table "vehicles", force: :cascade do |t|
+    t.integer "store_item_id"
     t.string "vin"
     t.string "plate"
     t.integer "mileage"

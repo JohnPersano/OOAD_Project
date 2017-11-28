@@ -3,13 +3,27 @@
   <!-- Row container -->
   <div style="padding-left: 10%; padding-right: 10%">
 
-    <!-- Title row -->
+    <!-- Orders row -->
     <div class="row">
       <div class="col-sm-12">
-        <h1 style="font-family: 'Encode Sans Expanded', sans-serif; font-weight: 200">Orders</h1>
-        <div style="height: 50px;"></div>
-        <h3 style="margin-left: 74px">No orders yet!</h3>
-        <div style="height: 50px;"></div>
+        <h1 style="font-family: 'Encode Sans Expanded', sans-serif; font-weight: 200">Pending orders</h1>
+        <% @orders.each do |order| %>
+
+            <% vehicle_description = Vehicle.find_by_vin(order.vehicle_vin).vehicle_description %>
+
+            <div class="row store-row w3-animate-opacity" style="margin-left: 6px; margin-right: 6px; padding: 20px">
+              <h4>Customer name: <%= order.customer.name %></h4>
+              <p>Customer email: <%= order.customer.email %></p>
+              <p>Customer ID: <%= order.customer.license_id %></p>
+              <hr>
+              <p>Requesting: <%= vehicle_description.year %> <%= vehicle_description.make %> <%= vehicle_description.model %></p>
+              <p>VIN: <%= order.vehicle_vin %></p>
+              <%= link_to 'Approve', order_action_page_path(order: order, order_action: 'approved'), class: 'btn btn-success store-button' %>&nbsp;&nbsp;&nbsp;&nbsp;
+
+              <%= link_to 'Reject', order_action_page_path(order: order, order_action: 'rejected'), class: 'btn btn-danger store-button' %>
+            </div>
+
+        <% end %>
       </div>
     </div>
 
@@ -17,7 +31,6 @@
     <div class="row">
       <div class="col-sm-12">
         <h1 style="font-family: 'Encode Sans Expanded', sans-serif; font-weight: 200">Customers</h1>
-
         <% @customers.each do |customer| %>
 
             <div class="row store-row w3-animate-opacity" style="margin-left: 6px; margin-right: 6px; padding: 20px">
@@ -28,7 +41,6 @@
             </div>
 
         <% end %>
-
       </div>
     </div>
 

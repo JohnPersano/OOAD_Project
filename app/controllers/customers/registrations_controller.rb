@@ -13,9 +13,10 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    @orders = Order.where(customer_id: current_customer)
+    super
+  end
 
   # PUT /resource
   # def update

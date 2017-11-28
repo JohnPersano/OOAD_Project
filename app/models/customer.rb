@@ -1,6 +1,7 @@
 class Customer < ApplicationRecord
 
   has_one :address
+  has_many :order
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

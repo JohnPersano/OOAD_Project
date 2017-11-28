@@ -1,7 +1,3 @@
-
-# Handles generating faux data
-include RentlyApplicationHelper
-
 # Class that handles top level user functionality
 class RentlyApplication
   # Ruby mixin that forces RentlyApplication to be a singleton
@@ -11,7 +7,7 @@ class RentlyApplication
 
   # Called when RentlyApplication is initialized
   def initialize
-    @stores = load_stores
+    @stores = Store.all
   end
 
   # Search for stores using address or airport
@@ -28,8 +24,8 @@ class RentlyApplication
       end
 
       # If the user entered a zipcode
-      if query[:zipcode] && !query[:zipcode].empty?
-        if store.address.zipcode == query[:zipcode]
+      if query[:zip] && !query[:zip].empty?
+        if store.address.zip == query[:zip]
           store_matches << store
           next
         end
@@ -72,12 +68,5 @@ class RentlyApplication
       end
     end
     store_matches
-  end
-
-  # Load store data
-  def load_stores
-
-    # DataGenerator generatees faux data, in production this would be a database
-    DataGenerator.instance.get_store_data
   end
 end

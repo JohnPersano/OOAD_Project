@@ -41,7 +41,7 @@
               <div class="col-sm-8">
                 <!-- Zip code -->
                 <p class="form_text">Zipcode</p>
-                <%= text_field_tag :zipcode, params[:zipcode], :value => params[:zipcode], class: 'form_textfield_full' %>
+                <%= text_field_tag :zip, params[:zip], :value => params[:zip], class: 'form_textfield_full' %>
               </div>
             </div>
 
@@ -78,7 +78,7 @@
             <h4 style="font-family: 'Encode Sans Expanded', sans-serif;
                 font-weight: 300">
               <%= store.address.street_number %> <%= store.address.street_name %> <br>
-              <%= store.address.city %>, <%= store.address.state %> <%= store.address.zipcode %>
+              <%= store.address.city %>, <%= store.address.state %> <%= store.address.zip %>
             </h4>
 
             <h5>Phone: <%= number_to_phone(store.phone_number, area_code: true) %></h5>
@@ -101,9 +101,7 @@
         </h3>
     <% end %>
 
-
   </div>
-
 
   <!-- End Row container -->
 

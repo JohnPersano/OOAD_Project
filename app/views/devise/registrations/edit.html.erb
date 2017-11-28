@@ -63,6 +63,53 @@
         <%= link_to "Back", :back %>
 
       </div>
+
+      <% if resource.is_a? Customer %>
+
+        <h2 style="font-family: 'Encode Sans Expanded', sans-serif; font-weight: 200">Orders</h2>
+
+          <% if @orders != nil and @orders.any? %>
+              <% @orders.each do |order| %>
+
+                  <% vehicle_description = Vehicle.find_by_vin(order.vehicle_vin).vehicle_description %>
+
+                  <div class="row store-row w3-animate-opacity">
+
+                    <div class="col-sm-8" >
+                      <h3 class="store-title">
+                        <%= vehicle_description.year %>
+                        <%= vehicle_description.make %>
+                        <%= vehicle_description.model %>
+                      </h3>
+
+                      <h4>
+                        Daily cost: $<%= '%.2f' % order.total %>
+                      </h4>
+
+                      <h5>
+                        Order placed: <%= order.date %>
+                      </h5>
+
+                      <h5>
+                        Status: <%= order.status %>
+                      </h5>
+
+                      <% if order.status == 'Approved' %>
+                          <%= link_to 'Pay', 'https://www.paypal.com/signin?country.x=US&locale.x=en_US',
+                                      class: 'btn btn-danger store-button', target: :_blank %>
+                      <% end %>
+
+                    </div>
+
+                  </div>
+              <% end %>
+          <% else %>
+              <h4>No orders yet!</h4>
+          <% end %>
+
+      <% end %>
+
     </div>
+
   </div>
 </div>

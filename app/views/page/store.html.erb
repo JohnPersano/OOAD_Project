@@ -9,7 +9,7 @@
         <h4 style="font-family: 'Encode Sans Expanded', sans-serif;
             font-weight: 300">
           <%= @selected_store.address.street_number %> <%= @selected_store.address.street_name %> <br>
-          <%= @selected_store.address.city %>, <%= @selected_store.address.state %> <%= @selected_store.address.zipcode %>
+          <%= @selected_store.address.city %>, <%= @selected_store.address.state %> <%= @selected_store.address.zip %>
         </h4>
 
         <h5>Phone: <%= number_to_phone(@selected_store.phone_number, area_code: true) %></h5>
@@ -24,11 +24,11 @@
 
     <h2 class="store-title" style="margin-top: 50px">Store inventory</h2>
 
-    <% unless @selected_store.store_items.any? %>
+    <% unless @selected_store.store_item.any? %>
         <h4 style="margin-top: 12px">NO INVENTORY</h4>
     <% end %>
 
-    <% @selected_store.store_items.each do |store_item| %>
+    <% @selected_store.store_item.each do |store_item| %>
 
       <div class="row store-row w3-animate-opacity">
 
@@ -39,11 +39,11 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" >
               <div class="item active">
-                <%= image_tag(store_item.vehicle.image_urls[0], class: 'store-image') %>
+                <%= image_tag(store_item.vehicle.image_url, class: 'store-image') %>
               </div>
 
               <div class="item">
-                <%= image_tag(store_item.vehicle.image_urls[1], class: 'store-image') %>
+                <%= image_tag(store_item.vehicle.image_url, class: 'store-image') %>
               </div>
             </div>
           </div>
@@ -62,7 +62,13 @@
 
           <h5 class="store-title">
             <br>
-            In stock: <%=store_item.quantity%>
+            In stock:
+            <% if store_item.quantity > 0 %>
+                <%=store_item.quantity%>
+            <% else %>
+                <span style="color:red"><b>Out of stock</b></span>
+            <% end %>
+
           </h5>
 
           <h5 class="store-title">
@@ -81,7 +87,10 @@
 
           <div style="height: 8px"></div>
 
-          <%= link_to 'Rent me!', store_page_path(:uid => @selected_store.uid), class: 'btn btn-primary store-button' %>
+          <!-- Only show the rent button if the quantity is above zero -->
+          <% if store_item.quantity > 0 %>
+            <%= link_to 'Rent me!', order_page_path(store: @selected_store, store_item: store_item), class: 'btn btn-primary store-button' %>
+          <% end %>
 
         </div>
 
