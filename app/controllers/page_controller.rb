@@ -20,7 +20,7 @@ class PageController < ApplicationController
   def store
     @selected_store = RentlyApplication.instance.search_for_store(params)
   end
-  
+
   def order
     @order_store_item = StoreItem.find(params[:store_item])
     @order_store = @order_store_item.store

@@ -12,7 +12,7 @@ camaro_vehicle.vehicle_description = VehicleDescription.create!(model: 'Camaro',
                                                                 color: 'Red', description: 'Fast, fun, and loud!',
                                                                 seats: 4, doors: 2)
 
-camaro_store_item = StoreItem.create!(quantity: 1, available: true, available_time: '12-08-2017',
+camaro_store_item = StoreItem.create!(quantity: 3, available: true, available_time: '12-08-2017',
                                     cost: 87.00, discount: 0, dropoff_location: 'Mystic')
 camaro_store_item.vehicle = camaro_vehicle
 
@@ -24,7 +24,7 @@ corvette_vehicle.vehicle_description = VehicleDescription.create!(model: 'Corvet
                                                                   seats: 2, doors: 2)
 
 
-corvette_store_item = StoreItem.create!(quantity: 2, available: true, available_time: '12-26-2017',
+corvette_store_item = StoreItem.create!(quantity: 5, available: true, available_time: '12-26-2017',
                                   cost: 126.00, discount: 0, dropoff_location: 'Milford')
 corvette_store_item.vehicle = corvette_vehicle
 
