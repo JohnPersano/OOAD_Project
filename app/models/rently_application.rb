@@ -59,6 +59,8 @@ class RentlyApplication
   # Search for stores using address or airport
   def search_for_store(query)
 
+    @stores = Store.all
+
     # List to hold all store matches
     store_matches = []
 
