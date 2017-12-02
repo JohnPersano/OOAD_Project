@@ -21,6 +21,14 @@ class PageController < ApplicationController
     @selected_store = RentlyApplication.instance.search_for_store(params)
   end
 
+  def store_reset
+    StoreItem.all.each do |store_item|
+      store_item.quantity = 3
+      store_item.save!
+    end
+    Order.delete_all
+  end
+
   def order
     @order_store_item = StoreItem.find(params[:store_item])
     @order_store = @order_store_item.store
