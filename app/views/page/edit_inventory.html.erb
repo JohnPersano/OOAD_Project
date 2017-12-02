@@ -1,0 +1,28 @@
+<div class="container-fluid" style="padding-top: 100px">
+
+  <!-- Row container -->
+  <div style="padding-left: 25%; padding-right: 25%">
+
+    <!-- Title row -->
+    <div class="row">
+      <div class="col-sm-12">
+        <h2 style="font-family: 'Encode Sans Expanded', sans-serif; font-weight: 200">
+          Order from  <%= @order_store.name %>
+        </h2>
+      </div>
+    </div>
+
+    <div class="row" style="height: 25px;"></div>
+
+
+
+    <div style="height: 25px; width: 100%"></div>
+
+    <%= link_to 'Send order', order_submitted_page_path(store: @order_store, store_item: @order_store_item),
+                class: 'btn btn-primary store-button', style: 'float: right;' %>
+
+  </div>
+  <!-- End Row container -->
+
+</div>
+<!-- End Container fluid -->

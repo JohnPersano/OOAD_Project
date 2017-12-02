@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   get '/findLocation', to: 'page#find_location', as: 'find_location_page'
   get '/store', to: 'page#store', as: 'store_page'
+  post '/store', to: 'page#store_reset'
+
   get '/order', to: 'page#order', as: 'order_page'
   get '/thanks', to: 'page#order_submitted', as: 'order_submitted_page'
   get '/order-action', to: 'page#order_action', as: 'order_action_page'

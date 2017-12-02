@@ -1,13 +1,59 @@
 # Class that handles top level user functionality
 class RentlyApplication
-  # Ruby mixin that forces RentlyApplication to be a singleton
+
+  # Ruby mixin that provides singleton pattern behavior
   include Singleton
 
-  attr_accessor :stores
+  # Ruby method of defining private attributes and their getter methods
+  attr_accessor :server_uptime, :connections_served, :stacktraces, :stores
 
   # Called when RentlyApplication is initialized
   def initialize
     @stores = Store.all
+  end
+
+  # Updates the store's SSL certificate (psuedocode)
+  def update_ssl_certificate
+    Rails.update_certificate()
+  end
+
+  # Force Rently to display a server maintenance message (psuedocode)
+  def display_server_downtime_message
+    Rails.application.display('Server maintenance. Rently will be back in a bit!')
+  end
+
+  # Sends an email out to each Rently admin
+  def email_rently_admins(message)
+
+    # For each employee
+    Employee.all.each do |employee|
+
+      # If the Employee is a Rently Administrator, email them
+      ApplicationMailer.send(employee, message) if employee.instance_of?(Administrator)
+    end
+  end
+
+  # Sends an email out to each Rently customer
+  def email_rently_customers(message)
+
+    # For each customer
+    Customer.all.each do |customer|
+      ApplicationMailer.send(customer, message)
+    end
+  end
+
+  # Clear every stacktrace
+  def clear_stacktraces
+    RentlyApplication.stacktraces = nil
+  end
+
+  # Saves the stacktraces to a file
+  def get_stacktraces_report
+
+    # For each stacktrace, write to a file
+    RentlyApplication.stacktraces.each do |stacktrace|
+      File.new.write(stacktrace)
+    end
   end
 
   # Search for stores using address or airport

@@ -43,11 +43,11 @@
         <% if customer_signed_in? %>
             <li><%= link_to 'Customer account', edit_customer_registration_path %></li>
             <li> <%= link_to 'Log out', destroy_customer_session_path, method: :delete %></li>
-      <% elsif employee_signed_in? %>
+        <% elsif employee_signed_in? %>
             <li><%= link_to 'Account', edit_employee_registration_path %></li>
             <li><%= link_to 'Dashboard', employee_dashboard_page_path %></li>
             <li> <%= link_to 'Log out', destroy_employee_session_path, method: :delete %></li>
-      <% else %>
+        <% else %>
             <li><%= link_to 'Log in', new_customer_session_path %></li>
         <% end %>
       </ul>
