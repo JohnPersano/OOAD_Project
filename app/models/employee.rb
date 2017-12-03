@@ -1,9 +1,18 @@
+# Employee class which holds information about a particular employee
 class Employee < ApplicationRecord
 
+  # Composition relationship (for database use)
   has_one :address
 
+  # Devise Authentication specific attributes
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  # Note: All fields are defined in the database wrapper in 'db/migrate/20171010165151_devise_create_employees'
+  #       Instead of using public functions to validate data, we will use Rails database validations
+
+  # Public fields (generates getter functions)
+  attr_accessor :id, :email, :phone_number
 
   # Name validations
   validates_presence_of :name

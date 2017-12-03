@@ -1,7 +1,10 @@
-# Class that handles top level user functionality
+# RentlyApplication class that handles top level user functionality
 class RentlyApplication
 
-  # Ruby mixin that provides singleton pattern behavior
+  # Composition relationship (for database use)
+  has_many :store
+
+  # Use singleton pattern
   include Singleton
 
   # Ruby method of defining private attributes and their getter methods
