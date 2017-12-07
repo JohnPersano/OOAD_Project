@@ -1,5 +1,5 @@
 # RentlyApplication class that handles top level user functionality
-class RentlyApplication
+class RentlyApplication < ApplicationRecord
 
   # Composition relationship (for database use)
   has_many :store

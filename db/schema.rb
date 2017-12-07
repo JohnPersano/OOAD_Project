@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171128163903) do
+ActiveRecord::Schema.define(version: 20171203221012) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "store_id"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 20171128163903) do
     t.string "state"
     t.string "country"
     t.string "zip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "billing_informations", force: :cascade do |t|
+    t.integer "cardNumber"
+    t.date "cardExpiration"
+    t.decimal "total"
+    t.decimal "salesTax"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -67,13 +76,44 @@ ActiveRecord::Schema.define(version: 20171128163903) do
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
   end
 
+  create_table "history_items", force: :cascade do |t|
+    t.string "actionName"
+    t.string "actionItem"
+    t.datetime "actionDate"
+    t.string "actionResult"
+    t.string "priviledges"
+    t.string "priviledgesUsed"
+    t.string "storeUID"
+    t.string "userEmail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id"
     t.string "store_uid"
+    t.string "order_id"
     t.string "vehicle_vin"
     t.datetime "date"
     t.string "status"
     t.decimal "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rently_admins", force: :cascade do |t|
+    t.string "email"
+    t.string "password"
+    t.datetime "lastLogin"
+    t.string "privileges"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rently_applications", force: :cascade do |t|
+    t.integer "server_uptime"
+    t.integer "connections_served"
+    t.string "stacktraces"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

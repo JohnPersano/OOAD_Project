@@ -3,6 +3,7 @@ class CreateOrders < ActiveRecord::Migration[5.1]
     create_table :orders do |t|
       t.integer :customer_id
       t.string :store_uid
+      t.string :order_id
       t.string :vehicle_vin
       t.datetime :date
       t.string :status
