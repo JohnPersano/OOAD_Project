@@ -13,7 +13,7 @@ class Customer < ApplicationRecord
   #       Instead of using public functions to validate data, we will use Rails database validations
 
   # Public fields (generates getter functions)
-  attr_accessor :name, :email, :phone_number
+  attr_accessor :customer_name, :customer_email, :phone_number
 
   # Name validations
   validates_presence_of :name

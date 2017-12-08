@@ -12,7 +12,7 @@ class Employee < ApplicationRecord
   #       Instead of using public functions to validate data, we will use Rails database validations
 
   # Public fields (generates getter functions)
-  attr_accessor :id, :email, :phone_number
+  attr_accessor :employee_id, :employee_email, :phone_number
 
   # Name validations
   validates_presence_of :name
